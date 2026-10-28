@@ -1,0 +1,31 @@
+{
+	email {$ACME_EMAIL}
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+
+	# Backend: panel API (with SSE), the WhatsApp webhook and the public health check.
+	# /actuator/prometheus is not routed: it is only reachable on the internal network.
+	@backend path /api/* /webhooks/* /actuator/health /actuator/health/*
+	handle @backend {
+		reverse_proxy {$APP_UPSTREAM} {
+			# SSE: send events as they come
+			flush_interval -1
+		}
+	}
+
+	handle {
+		root * /srv/panel
+		try_files {path} /index.html
+		file_server
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy same-origin
+		-Server
+	}
+}

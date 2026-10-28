@@ -54,3 +54,11 @@ backend README). Point the proxy elsewhere with `BACKEND_URL=http://host:port np
 Same flow as the backend ([`CONTRIBUTING.md`](CONTRIBUTING.md)): work on `feat/`, `fix/`,
 `refactor/` or `chore/` branches from `dev`, pull requests into `dev`, and `main` only receives
 pull requests from `dev`.
+
+## Production image
+
+`Dockerfile` builds the panel and packs it in Caddy with [`Caddyfile`](Caddyfile): Caddy gets the
+TLS certificate for `DOMAIN`, serves the panel and proxies `/api`, `/webhooks` and
+`/actuator/health` to `APP_UPSTREAM` (SSE unbuffered). The backend's
+`deploy/docker-compose.prod.yml` builds it from this repository's `main` branch (see the backend's
+`docs/DEPLOY.md`).
