@@ -1,0 +1,278 @@
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1d2330;
+  --muted: #687083;
+  --border: #dde1e8;
+  --accent: #1f7a4d;
+  --accent-text: #ffffff;
+  --danger: #b42318;
+  --fresh: #fff4d6;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12151b;
+    --surface: #1c2028;
+    --text: #e8ebf1;
+    --muted: #9aa2b1;
+    --border: #2c323d;
+    --accent: #38a169;
+    --fresh: #3a3320;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+button {
+  font: inherit;
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+button.on,
+form button[type='submit'],
+.card footer button:first-child {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+button.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--danger);
+}
+
+.centered {
+  text-align: center;
+  margin-top: 20vh;
+}
+
+.login {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.login form {
+  display: grid;
+  gap: 0.9rem;
+  width: min(360px, 100%);
+  background: var(--surface);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.login label {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.login input {
+  font: inherit;
+  padding: 0.55rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.topbar .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.count {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card.fresh {
+  background: var(--fresh);
+  border-color: #e0a800;
+}
+
+.card header {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.card header strong {
+  font-size: 1.15rem;
+}
+
+.badge {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.card p {
+  margin: 0.35rem 0;
+}
+
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.notes {
+  display: block;
+  color: var(--muted);
+}
+
+.totals {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin: 0.25rem 0;
+}
+
+.totals dd {
+  margin: 0;
+}
+
+.card footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.handoffs {
+  margin: 0 1rem 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.handoffs h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.handoffs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.handoffs li {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.handoffs .last {
+  margin: 0.2rem 0 0;
+  font-style: italic;
+}
+
+.recent {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.recent table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+.recent th,
+.recent td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
