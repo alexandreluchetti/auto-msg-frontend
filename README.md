@@ -1,8 +1,10 @@
 # auto-msg-frontend
 
-Orders panel of the auto-msg WhatsApp customer-service platform: restaurant staff sign in, see
+Panel of the auto-msg WhatsApp customer-service platform: restaurant staff sign in, see
 orders arrive live with a sound alert, move them through their stages (the customer is notified on
-WhatsApp) and hand conversations back to the bot. The backend lives in
+WhatsApp) and hand conversations back to the bot; with track H the business also shapes its
+assistant there (persona, human pace, simulator, conversations; see
+[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) and [`docs/ROADMAP.md`](docs/ROADMAP.md)). The backend lives in
 [`auto-msg-backend`](https://github.com/alexandreluchetti/auto-msg-backend); its API contract is
 [`docs/api/openapi.yaml`](https://github.com/alexandreluchetti/auto-msg-backend/blob/dev/docs/api/openapi.yaml).
 
