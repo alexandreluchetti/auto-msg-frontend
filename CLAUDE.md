@@ -1,9 +1,11 @@
 # auto-msg-frontend — Instruções para Claude
 
-Painel de pedidos da plataforma auto-msg (React 19 + Vite + TypeScript, D-010). O backend e as
+Painel da plataforma auto-msg (React 19 + Vite + TypeScript, D-010): pedidos e, na trilha H
+(D-012/D-013, ADR-011 do backend), persona, ritmo humano, simulador e conversas. O backend e as
 decisões do produto ficam em `../auto-msg-backend` (`docs/decisions.md`, `docs/adr/`,
 `docs/ROADMAP.md`); o contrato da API é `../auto-msg-backend/docs/api/openapi.yaml`. Visão e
-estrutura: [`README.md`](README.md).
+estrutura: [`README.md`](README.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md); próximo trabalho:
+[`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Regras de trabalho
 
@@ -29,3 +31,6 @@ estrutura: [`README.md`](README.md).
 - Acessibilidade: regiões e cartões com `aria-label`; os testes buscam por papel e rótulo.
 - Testes com Vitest + Testing Library; a API e o SSE são simulados com `fakeApi` e
   `FakeEventSource` (`src/test-support.ts`). Nunca chame o backend real nos testes.
+- Atendimento humanizado: as telas de persona e ritmo editam sempre o **rascunho**; só "Publicar"
+  muda o que o WhatsApp usa. O simulador nunca envia WhatsApp e cada mensagem dele tem custo de
+  LLM: deixe isso visível na tela. Só o papel `admin` edita e publica configurações.
