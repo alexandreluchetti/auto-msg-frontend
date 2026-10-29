@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api } from './api/client';
-import type { Handoff, Me, Order, OrderStatus } from './api/types';
+import type { Handoff, Order, OrderStatus } from './api/types';
 import { type PanelEvent, usePanelEvents } from './events';
 import { HandoffList } from './HandoffList';
 import { OrderCard } from './OrderCard';
@@ -14,7 +14,7 @@ const FRESH_MS = 60_000;
  * The orders board: open orders by stage, live (SSE) with a sound alert for new ones, and the
  * conversations staff are handling.
  */
-export function Board({ me, onSignedOut }: { me: Me; onSignedOut: () => void }) {
+export function Board() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [recent, setRecent] = useState<Order[] | null>(null);
   const [handoffs, setHandoffs] = useState<Handoff[]>([]);
@@ -100,10 +100,6 @@ export function Board({ me, onSignedOut }: { me: Me; onSignedOut: () => void }) 
           </button>
           <button type="button" onClick={async () => setRecent(recent ? null : await api.orders('recent'))}>
             {recent ? 'Ver em andamento' : 'Últimas 24 horas'}
-          </button>
-          <span className="muted">{me.name}</span>
-          <button type="button" onClick={onSignedOut}>
-            Sair
           </button>
         </div>
       </header>

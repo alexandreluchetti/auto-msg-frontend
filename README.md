@@ -42,11 +42,15 @@ backend README). Point the proxy elsewhere with `BACKEND_URL=http://host:port np
 | Path | What |
 |---|---|
 | `src/api/` | Contract types and the API client (session cookie, CSRF header) |
-| `src/App.tsx` | Sign-in check, then the board |
+| `src/App.tsx` | Sign-in check, then the page chosen in the side navigation |
+| `src/Shell.tsx` | Side navigation by role (`#/pedidos`, `#/conversas`, admins: `#/assistente`, `#/ritmo`, `#/simulador`) |
 | `src/LoginPage.tsx` | E-mail and password |
 | `src/Board.tsx` | Columns by stage, live events, sound, last 24 hours |
 | `src/OrderCard.tsx` | One order: items, total, address, payment, next moves |
 | `src/HandoffList.tsx` | Conversations staff are handling; "Devolver ao bot" |
+| `src/conversations/` | Conversations list and detail: messages, order in progress, take over / hand back |
+| `src/settings/` | Persona (with preview) and pace screens, always on the draft; publishing and versions |
+| `src/simulator/` | WhatsApp-like simulator of the draft, played back at the planned pace |
 | `src/orders/transitions.ts` | Moves allowed from each status (mirrors the backend) |
 | `src/events.ts` | SSE subscription |
 | `src/sound.ts` | New-order chime (Web Audio, no file) |
