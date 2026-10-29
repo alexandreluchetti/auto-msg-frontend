@@ -35,6 +35,7 @@ export const PAYMENT_LABELS: Record<Order['paymentMethod'], string> = {
 
 export const HANDOFF_LABELS: Record<HandoffReason, string> = {
   STAFF_REPLY: 'A equipe respondeu pelo app',
+  STAFF_TAKEOVER: 'A equipe assumiu pelo painel',
   CUSTOMER_REQUEST: 'Cliente pediu atendente',
   BOT_REQUEST: 'Assistente pediu ajuda',
   REPEATED_FAILURES: 'Assistente não conseguiu responder',

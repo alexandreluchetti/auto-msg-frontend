@@ -1,4 +1,15 @@
-import type { Handoff, Me, Order, OrderStatus } from './types';
+import type {
+  ConversationDetail,
+  ConversationSummary,
+  Handoff,
+  Me,
+  Order,
+  OrderStatus,
+  Settings,
+  SimulatorLine,
+  SimulatorReply,
+  TenantConfig,
+} from './types';
 
 /** The API answered with an error; `status` is the HTTP status. */
 export class ApiError extends Error {
@@ -69,4 +80,24 @@ export const api = {
   moveOrder: (id: string, status: OrderStatus) => request<Order>('POST', `/api/v1/orders/${id}/status`, { status }),
   handoffs: () => request<Handoff[]>('GET', '/api/v1/conversations/handoffs'),
   resume: (id: string) => request<void>('POST', `/api/v1/conversations/${id}/resume`),
+  takeOver: (id: string) => request<void>('POST', `/api/v1/conversations/${id}/takeover`),
+  conversations: (filter: { state?: 'BOT' | 'HUMAN'; q?: string } = {}) => {
+    const query = new URLSearchParams();
+    if (filter.state) {
+      query.set('state', filter.state);
+    }
+    if (filter.q) {
+      query.set('q', filter.q);
+    }
+    const suffix = query.toString();
+    return request<ConversationSummary[]>('GET', `/api/v1/conversations${suffix ? `?${suffix}` : ''}`);
+  },
+  conversation: (id: string) => request<ConversationDetail>('GET', `/api/v1/conversations/${id}`),
+  settings: () => request<Settings>('GET', '/api/v1/settings'),
+  saveDraft: (config: TenantConfig) => request<{ version: number }>('PUT', '/api/v1/settings/draft', config),
+  publish: () => request<{ version: number }>('POST', '/api/v1/settings/publish'),
+  simulatorHistory: () => request<SimulatorLine[]>('GET', '/api/v1/simulator/messages'),
+  simulate: (text: string, replyId?: string) =>
+    request<SimulatorReply>('POST', '/api/v1/simulator/messages', { text, replyId }),
+  resetSimulator: () => request<void>('DELETE', '/api/v1/simulator/messages'),
 };

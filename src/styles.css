@@ -276,3 +276,308 @@ a {
   padding: 0.5rem;
   border-bottom: 1px solid var(--border);
 }
+
+.shell {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.sidenav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.sidenav a {
+  display: block;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.sidenav a[aria-current='page'] {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.sidenav .who {
+  margin-top: auto;
+  display: grid;
+  gap: 0.3rem;
+}
+
+@media (max-width: 700px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidenav {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidenav ul {
+    grid-auto-flow: column;
+    overflow-x: auto;
+  }
+}
+
+.settings-body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media (max-width: 900px) {
+  .settings-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  display: grid;
+  gap: 0.8rem;
+  background: var(--surface);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.form label {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.form label.check,
+label.check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.form button[type='submit'] {
+  justify-self: start;
+}
+
+.preview {
+  background: var(--surface);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.preview h2 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.preview table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.preview th,
+.preview td {
+  text-align: left;
+  padding: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.badge.draft {
+  color: #8a5a00;
+}
+
+.badge.staff {
+  color: var(--danger);
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0.75rem;
+  margin: 0;
+  background: #e5ddd5;
+  border-radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .chat {
+    background: #0b141a;
+  }
+}
+
+.bubble {
+  max-width: 80%;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  background: var(--surface);
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+.bubble p {
+  margin: 0;
+}
+
+.bubble.customer {
+  align-self: flex-end;
+  background: #d9fdd3;
+  color: #111b21;
+}
+
+.bubble.staff {
+  border-left: 3px solid var(--accent);
+}
+
+.bubble .author {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.bubble time {
+  display: block;
+  font-size: 0.7rem;
+  text-align: right;
+}
+
+.choices {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.typing {
+  font-style: italic;
+  color: var(--muted);
+  margin: 0;
+}
+
+.simulator,
+.conversations {
+  display: grid;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+.simulator > :not(.topbar),
+.conversations > :not(.topbar) {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.phone {
+  min-height: 50vh;
+  max-width: 480px;
+}
+
+.composer {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 480px;
+}
+
+.composer input {
+  flex: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.conversation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.3rem;
+  align-content: start;
+}
+
+.conversation-list button {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.conversation-list button.selected {
+  border-color: var(--accent);
+}
+
+.conversation-list .last {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.conversation {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.conversation header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.conversation h2 {
+  margin: 0;
+}
+
+.cart {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.cart h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
